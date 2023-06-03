@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom';
 
 const Dashboard_hotels=() => {
 
-  const users = [
-    { id: 1, name: 'John', city: 'oran', description: 'Its a beautiful place where...' ,maps_link: '', stars: 5, rating: 0 },
+  const hotels = [
+    { id: 1, name: 'John', description: 'Its a beautiful place where...' , city: 'oran', maps_link: '', stars: 5, rating: 0 },
 
  
   ];
@@ -20,8 +20,8 @@ const Dashboard_hotels=() => {
         <tr>
         <th>ID</th>
           <th>Name</th>
-          <th>City</th>
           <th>Description</th>
+          <th>City</th>
           <th>Maps</th>
           <th>Stars</th>
           <th>Rating</th>
@@ -32,14 +32,14 @@ const Dashboard_hotels=() => {
   };
 
   const renderTableData = () => {
-    return users.map(user => {
-      const { id, name, city, description, maps_link, stars, rating } = user;   
+    return hotels.map(hotel => {
+      const { id, name, description, city, maps_link, stars, rating } = hotel;   
          return (
         <tr key={id}>
           <td>{id}</td>
           <td>{name}</td>
-          <td>{city}</td>
           <td>{description}</td>
+          <td>{city}</td>
           <td>{maps_link}</td>
           <td>{stars}</td>
           <td>{rating}</td>

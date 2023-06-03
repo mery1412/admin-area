@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const Dashboard_forms=() => {
 
-  const users = [
+  const forms = [
     { id: 1, name: 'John', email: 'john@example.com', role: 'Guide' },
     { id: 2, name: 'Jane', email: 'jane@example.com', role: 'Translator' },
     { id: 3, name: 'Bob', email: 'bob@example.com', role: '' },
@@ -35,8 +35,8 @@ const Dashboard_forms=() => {
   };
 
   const renderTableData = () => {
-    return users.map(user => {
-      const { id, name, email, role } = user;
+    return forms.map(form => {
+      const { id, name, email, role } = form;
       return (
         <tr key={id}>
           <td>{id}</td>

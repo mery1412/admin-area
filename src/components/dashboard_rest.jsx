@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom';
 
 const Dashboard_rest=() => {
 
-  const users = [
-    { id: 1, name: 'John', city: 'oran', description: 'Its a beautiful place where...' ,maps_link: '', stars: 5, rating: 0 },
+  const rests = [
+    { id: 1, name: 'John', description: 'Its a beautiful place where...' ,city: 'oran', type:'', maps_link: '',},
   ];
 
   const renderTableHeader = () => {
@@ -18,30 +18,28 @@ const Dashboard_rest=() => {
         <tr>
           <th>ID</th>
           <th>Name</th>
-          <th>City</th>
           <th>Description</th>
+          <th>City</th>
+          <th>Type</th>
           <th>Maps</th>
-          <th>Stars</th>
-          <th>Rating</th>
-          <th>Actions</th> {/* Add a new column for the buttons */}
+          <th>Actions</th> 
         </tr>
       </thead>
     );
   };
 
   const renderTableData = () => {
-    return users.map(user => {
-      const { id, name, city, description, maps_link, stars, rating } = user;   
+    return rests.map(rest => {
+      const { id, name, description,  city, type, maps_link } = rest;   
       return (
         <tr key={id}>
        <td>{id}</td>
           <td>{name}</td>
-          <td>{city}</td>
           <td>{description}</td>
+          <td>{city}</td>
+          <td>{type}</td>
           <td>{maps_link}</td>
-          <td>{stars}</td>
-          <td>{rating}</td>
-          
+
           <td>
           <div className={styles.buttonGroup}>
           <Link to='/adminEdit' ><button className={styles.button}>Edit</button> {/* Add your button(s) here */}</Link>

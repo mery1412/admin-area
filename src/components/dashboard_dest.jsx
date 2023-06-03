@@ -8,9 +8,9 @@ import { Link } from 'react-router-dom';
 
 const Dashboard_dest=() => {
 
-  const users = [
-    { id: 1, name: 'John', city: 'oran', description: 'Its a beautiful place where...' ,maps_link: '', rating:0 },
-    
+  const dests = [
+    { id: 1, name: 'John', description: 'Its a beautiful place where...' , city: 'oran',maps_link: '' },
+
   ];
 
   const renderTableHeader = () => {
@@ -19,8 +19,8 @@ const Dashboard_dest=() => {
         <tr>
           <th>ID</th>
           <th>Name</th>
-          <th>City</th>
           <th>Description</th>
+          <th>City</th>
           <th>Maps</th>
           <th>Rating</th>
           <th>Actions</th> {/* Add a new column for the buttons */}
@@ -30,14 +30,14 @@ const Dashboard_dest=() => {
   };
 
   const renderTableData = () => {
-    return users.map(user => {
-      const { id, name, city, description, maps_link, rating } = user;
+    return dests.map(dest => {
+      const { id, name, description, city,  maps_link, rating } = dest;
       return (
         <tr key={id}>
           <td>{id}</td>
           <td>{name}</td>
-          <td>{city}</td>
           <td>{description}</td>
+          <td>{city}</td>
           <td>{maps_link}</td>
           <td>{rating}</td>
           
