@@ -1,0 +1,323 @@
+@font-face {
+    font-family: 'mont';
+    src: url('../fonts/mont.ttf') format('woff2');
+  }
+
+  .nav_container{
+    background-color: #DDAC8C;
+    margin-top: 0%;
+    width: 100%;
+    position: relative;
+    display: flex;
+    height: 100px;
+    margin-bottom: 50px;
+  }
+
+  .rectangle{
+    margin-top: 0%;
+    width:100%;
+    height:100px;
+    background:#DDAC8C;
+  }
+
+  .space{
+    margin-top: 10%;
+  }
+
+  .title{
+    font-family: 'mont';
+    font-weight: 550;
+    margin-left: 30px;
+    margin-top: 30px;
+    margin-bottom: 0px;
+    font-size:20;
+  }
+
+  .btn{
+    border-radius: 10px;
+    padding: 8px ;
+    padding-top: 4px;
+    height: 30px;
+    width: 120px;
+    background-color: #000000;  
+    font-family: "mont"; 
+    font-weight: 400;
+    color: aliceblue;
+    font-size: 16px; 
+    position: absolute;
+    top: 120px;
+    right: 50px;
+  }
+
+  .btnCtn{
+    margin-bottom: 5;
+  }
+
+  .btn:hover {
+    content: "";
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+   
+  }
+
+  .btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.button-white::after {
+    background-color: #fff;
+}
+.view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+
+  .container  {
+  margin-top: -100px; 
+  margin-bottom: 100px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #D4D4D4;
+  border-radius: 5px;
+  width: 90%;
+  max-height: 100%; 
+  overflow-y: auto;
+  margin: 100px auto; 
+  padding: 20px; 
+  }
+  
+ 
+   .adminDashboardTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-left: 180px;
+    margin-right: 0px;
+    position: relative;
+
+  }
+  
+  .adminDashboardTable th {
+    padding: 10px;
+    text-align: left;
+    color: #000000; 
+  }
+  
+  .adminDashboardTable td {
+    padding: 10px;
+  color: black;
+  }
+  
+  .adminDashboardTable td.name {
+    color: #000000; 
+    
+  }
+  
+  .adminDashboardTable td.email {
+    color: #000000; 
+    
+  }
+  
+  .adminDashboardTable td.role {
+    color: #000000; /* Set the text color for the "role" column */
+  }
+
+  .adminDashboardTable button {
+    padding: 5px 10px;
+    background-color: #DDAC8C;
+    color: #000000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .adminDashboardTable button:hover {
+    background-color:#d3b7a4;
+  }
+
+  .buttonGroup {
+      display: flex;
+      gap: 10px; /* Adjust the gap as needed */
+    }
+ 
+
+  @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+
+
+.di{
+  margin-top: 0px;
+  /* position: absolute; */ /* Remove this line */
+  width: 90%;  
+  margin-left: 20pxs;
+    
+}
+.navcon {
+    min-width: 100%;
+    height: 70px ;
+    margin-left: 20px;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-around;
+    align-items: center ;
+    flex-direction: row;
+
+}
+
+.navv{
+   
+    min-width: 80%;
+    height: 80px ;
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center ;
+}
+
+.link {
+  text-decoration: none;
+  color: #000000;
+}
+.link:hover{
+  color: #fff;
+
+}
+
+
+
+.addButton {
+  position: relative;
+  bottom: 50px;;
+  left: 520px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+  padding: 8px ;
+  padding-top: 4px;
+  height: 30px;
+  width: 120px;
+  background-color: #000000;  
+  font-family: "mont"; 
+  font-weight: 400;
+  color: aliceblue;
+  font-size: 14px; 
+
+}
+
+.addButton:hover {
+  content: "";
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+ 
+}
+
+.addButton::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+
+*{ 
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.di{
+   
+    margin-top: 0px;
+    position: absolute;
+    
+ width:100%;
+/* height: 115.37px;
+left: 121px;
+top: 33px; */ 
+    
+}
+.navcon {
+    min-width: 100%;
+    height: 70px ;
+    margin: auto;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-around;
+    align-items: center ;
+    flex-direction: row;
+}
+
+.navv{
+   
+    min-width: 80%;
+    height: 80px ;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center ;
+}
+.link {
+  text-decoration: none;
+  margin: 1px;
+  font-size: 20px;
+}
+.title2 {
+  text-decoration: none;
+  margin-right: 10px;
+  font-size: 30px;
+  margin-top: 22px;
+}
+
+/* Add a margin to create a gap between the elements */
+.link:not(:last-child) {
+  margin-right: 10px;
+}
+
+
+.adminDashboardTable okButton {
+  padding: 5px 10px;
+  background-color:#4ff4cb;
+  color: #000000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+
+.adminDashboardTable noButton {
+  padding: 5px 10px;
+  background-color: #f44f4f; 
+  color: #000000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 10px; 
+}
