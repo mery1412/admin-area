@@ -1,12 +1,37 @@
-import React from "react";
+import React,{useState } from "react";
 import styles from "./../styles/dashboard.module.css"
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import {AiOutlineSetting} from "react-icons/ai";
 import { Link } from 'react-router-dom';
-
+import axios from 'axios'
+import { useEffect } from "react";
 
 const Dashboard_hotels=() => {
+  const [Hotels,setHotels]=useState([]);
+const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJhYTIzNTE2LTNmOGMtNDMzOS1hMzFiLWNlZWM1MTY0OTU1YiIsImlhdCI6MTY4NTg4MjU2OCwiZXhwIjoxNjg4NDc0NTY4fQ.WwfEsYfj8Ty6i8iCryFG2LMvRpEe_0tRfjVNaLV5JXc"
+
+  useEffect(()=>{
+    axios.get('http://localhost:4000/hotel/fetch', {
+  headers: {
+    'Authorization': ` Bearer ${token}`
+  }
+})
+
+.then((res)=>{
+    console.log(res.data);
+
+    setHotels((res.data.hotels));
+ // console.log(res.data.users)
+})
+  //console.log(Userrs)
+    .catch((err)=>{
+      console.log(err);
+    })
+  },
+{
+   // Authorization:' Bearer'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhmNTI4NTI3LWI1YTMtNDVjMS04MzAyLTFiMzk4OGVhODJlZCIsImlhdCI6MTY4NTgzMTYzOCwiZXhwIjoxNjg4NDIzNjM4fQ.c6AW_w55X0Eurs9K7m9dhJiJnQ4QQhvbv19VH_UmJoU 
+  },[])
 
   const hotels = [
     { id: 1, name: 'John', description: 'Its a beautiful place where...' , city: 'oran', maps_link: '', stars: 5, rating: 0 },
@@ -22,7 +47,6 @@ const Dashboard_hotels=() => {
           <th>Name</th>
           <th>Description</th>
           <th>City</th>
-          <th>Maps</th>
           <th>Stars</th>
           <th>Rating</th>
           <th>Actions</th> {/* Add a new column for the buttons */}
@@ -31,30 +55,7 @@ const Dashboard_hotels=() => {
     );
   };
 
-  const renderTableData = () => {
-    return hotels.map(hotel => {
-      const { id, name, description, city, maps_link, stars, rating } = hotel;   
-         return (
-        <tr key={id}>
-          <td>{id}</td>
-          <td>{name}</td>
-          <td>{description}</td>
-          <td>{city}</td>
-          <td>{maps_link}</td>
-          <td>{stars}</td>
-          <td>{rating}</td>
-          
-          <td>
-          <div className={styles.buttonGroup}>
-          <Link to='/adminEdit' ><button className={styles.button}>Edit</button> {/* Add your button(s) here */}</Link>
-            <button className={styles.button}>Delete</button>
-            </div>
-          </td>
 
-        </tr>
-      );
-    });
-  };  
 
     return(
     <>
@@ -85,8 +86,24 @@ const Dashboard_hotels=() => {
       <table className={styles.adminDashboardTable}>
       {renderTableHeader()}
       <tbody>
-        {renderTableData()}
-      </tbody>
+        {Hotels.map((hotel)=>(
+      <tr key={hotel.id}>
+          <td>{hotel.id}</td>
+          <td>{hotel.name}</td>
+          <td>{hotel.description}</td>
+          <td>{hotel.city}</td>
+          <td>{hotel.stars}</td>
+          <td>{hotel.rating}</td>
+          
+          <td>
+          <div className={styles.buttonGroup}>
+          <Link to='/adminEdit' ><button className={styles.button}>Edit</button> {/* Add your button(s) here */}</Link>
+            <button className={styles.button}>Delete</button>
+            </div>
+          </td>
+
+        </tr>    
+          ))}  </tbody>
       </table>
       </div>
       <div>  <Link to='/adminUpload'><button className={styles.addButton}>Add</button> </Link> </div>

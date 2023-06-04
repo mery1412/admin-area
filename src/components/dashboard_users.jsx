@@ -4,20 +4,32 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import {AiOutlineSetting} from "react-icons/ai";
 import { Link } from 'react-router-dom';
-
+import  axios from 'axios'
 
 const Dashboard_user=() => {
-const [Userr,setUserr]=useState([]);
-useEffect(()=>{
-  axios
-  .get('http://localhost:4000')
-  .then((res)=>{
+const [Userrs,setUserrs]=useState([]);
+const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJhYTIzNTE2LTNmOGMtNDMzOS1hMzFiLWNlZWM1MTY0OTU1YiIsImlhdCI6MTY4NTg4MjU2OCwiZXhwIjoxNjg4NDc0NTY4fQ.WwfEsYfj8Ty6i8iCryFG2LMvRpEe_0tRfjVNaLV5JXc"
+
+  useEffect(()=>{
+    axios.get('http://localhost:4000/admin/fetch', {
+  headers: {
+    'Authorization': ` Bearer ${token}`
+  }
+})
+
+.then((res)=>{
     console.log(res.data);
-    setUserr(res.data);})
+
+    setUserrs((res.data.users));
+  console.log(res.data.users)})
+  //console.log(Userrs)
     .catch((err)=>{
       console.log(err);
     })
-  })
+  },
+{
+   // Authorization:' Bearer'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhmNTI4NTI3LWI1YTMtNDVjMS04MzAyLTFiMzk4OGVhODJlZCIsImlhdCI6MTY4NTgzMTYzOCwiZXhwIjoxNjg4NDIzNjM4fQ.c6AW_w55X0Eurs9K7m9dhJiJnQ4QQhvbv19VH_UmJoU 
+  },[])
 
 
   const users = [
@@ -46,29 +58,20 @@ useEffect(()=>{
     );
   };
 
-  const renderTableData = () => {
+  const tt=()=>{
+   
  
-    return users.map(user => {
-      const { id, name, email, role } = user;
-      return (
-        <tr key={id}>
-          <td>{id}</td>
-          <td>{name}</td>
-          <td>{email}</td>
-          <td>{role}</td>
-          
-          <td>
-          <div className={styles.buttonGroup}>
 
-            <Link to='/adminEdit' ><button className={styles.button}>Edit</button> {/* Add your button(s) here */}</Link>
-            <button className={styles.button} >Delete</button>
-            </div>
-          </td>
+  }
+  //const renderTableData  =()=>  {
 
-        </tr>
-      );
-    });
-  };  
+
+    //  }
+    
+    
+  
+console.log(Userrs)
+   
 
     return(
     <>
@@ -98,9 +101,30 @@ useEffect(()=>{
       <div className={styles.container}>
       <table className={styles.adminDashboardTable}>
       {renderTableHeader()}
+
       <tbody>
-        {renderTableData()}
+      {/*  {renderTableData()}*/}
+      {Userrs.map((userrs) => (
+
+      <tr key={userrs.id}>
+        <td>{userrs.id}</td>
+        <td>{userrs.username}</td>
+        <td>{userrs.email}</td>
+        <td>{userrs.role}</td>
+        
+        <td>
+     
+        <div className={styles.buttonGroup}>
+
+          <Link to='/adminEdit' ><button className={styles.button}>Edit</button> {/* Add your button(s) here */}</Link>
+          <button className={styles.button} >Delete</button>
+          </div>
+        </td>
+
+      </tr>
+      ) )}
       </tbody>
+
       </table>
       </div>
       <div>  <Link to='/adminUpload'><button className={styles.addButton}>Add</button> </Link> </div>

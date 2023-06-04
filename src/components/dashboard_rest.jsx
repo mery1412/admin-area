@@ -1,13 +1,37 @@
-import React from "react";
+import React, {  useEffect,useState } from "react";
 import styles from "./../styles/dashboard.module.css"
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import {AiOutlineSetting} from "react-icons/ai";
 import { Link } from 'react-router-dom';
-
+import axios from "axios";
 
 const Dashboard_rest=() => {
+  const [Rest,setRest]=useState([]);
+const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJhYTIzNTE2LTNmOGMtNDMzOS1hMzFiLWNlZWM1MTY0OTU1YiIsImlhdCI6MTY4NTg4MjU2OCwiZXhwIjoxNjg4NDc0NTY4fQ.WwfEsYfj8Ty6i8iCryFG2LMvRpEe_0tRfjVNaLV5JXc"
 
+  useEffect(()=>{
+    axios.get('http://localhost:4000/restaurant/fetch', {
+  headers: {
+    'Authorization': ` Bearer ${token}`
+  }
+})
+
+.then((res)=>{
+    console.log(res.data);
+
+    setRest((res.data.restaurants));
+ // console.log(res.data.users)
+})
+  //console.log(Userrs)
+    .catch((err)=>{
+      console.log(err);
+    })
+  },
+{
+   // Authorization:' Bearer'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhmNTI4NTI3LWI1YTMtNDVjMS04MzAyLTFiMzk4OGVhODJlZCIsImlhdCI6MTY4NTgzMTYzOCwiZXhwIjoxNjg4NDIzNjM4fQ.c6AW_w55X0Eurs9K7m9dhJiJnQ4QQhvbv19VH_UmJoU 
+  },[])
+ console.log(Rest)
   const rests = [
     { id: 1, name: 'John', description: 'Its a beautiful place where...' ,city: 'oran', type:'', maps_link: '',},
   ];
@@ -21,37 +45,13 @@ const Dashboard_rest=() => {
           <th>Description</th>
           <th>City</th>
           <th>Type</th>
-          <th>Maps</th>
           <th>Actions</th> 
         </tr>
       </thead>
     );
   };
 
-  const renderTableData = () => {
-    return rests.map(rest => {
-      const { id, name, description,  city, type, maps_link } = rest;   
-      return (
-        <tr key={id}>
-       <td>{id}</td>
-          <td>{name}</td>
-          <td>{description}</td>
-          <td>{city}</td>
-          <td>{type}</td>
-          <td>{maps_link}</td>
-
-          <td>
-          <div className={styles.buttonGroup}>
-          <Link to='/adminEdit' ><button className={styles.button}>Edit</button> {/* Add your button(s) here */}</Link>
-            <button className={styles.button}>Delete</button>
-            </div>
-          </td>
-
-        </tr>
-      );
-    });
-  };  
-
+ 
     return(
     <>
     
@@ -81,8 +81,24 @@ const Dashboard_rest=() => {
       <table className={styles.adminDashboardTable}>
       {renderTableHeader()}
       <tbody>
-        {renderTableData()}
-      </tbody>
+        {Rest.map((rest)=>(
+      <tr key={rest.id}>
+       <td>{rest.id}</td>
+          <td>{rest.name}</td>
+          <td>{rest.description}</td>
+          <td>{rest.city}</td>
+          <td>{rest.type}</td>
+
+
+          <td>
+          <div className={styles.buttonGroup}>
+          <Link to='/adminEdit' ><button className={styles.button}>Edit</button> {/* Add your button(s) here */}</Link>
+            <button className={styles.button}>Delete</button>
+            </div>
+          </td>
+
+        </tr>   
+        ))}   </tbody>
       </table>
       </div>
       <div>  <Link to='/adminUpload'><button className={styles.addButton}>Add</button> </Link> </div>
